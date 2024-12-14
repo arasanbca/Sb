@@ -1,0 +1,74 @@
+<app-heading></app-heading>
+<div class="container">
+    <h2>TEMPLATE-DRIVEN FORM</h2>
+    <form #form1="ngForm" (submit)="onSubmit(form1)">
+        <div>
+           <p>
+            <label>FirstName:</label>
+            <input type="text" #f1="ngModel" name="firstname" id="firstname" [(ngModel)]="details.firstname" required minlength="8">
+            <span *ngIf="!f1.valid && (f1.touched || f1.dirty)">
+               <span  class="text-danger" *ngIf="f1.errors?.['minlength']">
+                INPUT SHOULD BE Minimum 8 Character
+               </span>
+               <span  class="text-danger" *ngIf="f1.errors?.['required']">
+                Fill the Name
+               </span>
+            </span>
+        </p>
+        </div>
+        <div>
+           <p>
+            <label>LastName:</label>
+            <input type="text" name="lastname" id="lastname"  [(ngModel)]="details.lastname">
+           </p>
+        </div>
+        <div>
+          <p>
+            <label>Email:</label>
+            <input type="text" name="email" id="email"  [(ngModel)]="details.email">
+          </p>
+        </div>
+        <div>
+            <p>
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="Male" id="gender"  [(ngModel)]="details.gender">Male
+                <input type="radio" name="gender" value="Female" id="gender"  [(ngModel)]="details.gender">Female
+            </p>
+        </div>
+        <div>
+            <p>
+                <label>Married:</label>
+                <input type="checkbox" name="ismarried" id="ismarried"  [(ngModel)]="details.ismarried">
+            </p>
+        </div>
+        <div>
+            <p>
+                <label>Country:</label>
+                <select name="country" id="country"  [(ngModel)]="details.country">
+                    <option>Select</option>
+                    <option [ngValue]="country.id" *ngFor="let country of countrylist">{{country.name}}</option>
+                </select>
+            </p>
+        </div>
+        <div ngModelGroup="address">
+            <p>
+                <label>Door No:</label>
+                <input type="text" name="doorno"  [(ngModel)]="details.address.doorno">
+            </p>
+            <p>
+                <label>Street:</label>
+                <input type="text" name="street"  [(ngModel)]="details.address.street">
+            </p>
+            <p>
+                <label>City:</label>
+                <input type="text" name="city"  [(ngModel)]="details.address.city">
+            </p>
+
+        </div>
+        <div>
+            <p>
+                <button >Submit</button>
+            </p>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,78 @@
+<app-heading></app-heading>
+<div class="container">
+    <h2>REACTIVE FORM</h2>
+        <form [formGroup]="contactform" (submit)="onsubmit()">
+            <div>
+               <p>
+                <label>FirstName:</label>
+                <input type="text" #f1="" name="firstname" id="firstname" formControlName="FN">
+                <!-- <span  *ngIf="!f1?.valid && (f1?.touched || f1?.dirty)">
+                    <span class="text-danger"*ngIf="f1?.errors?.['required']">
+                        Name is Required
+                    </span>
+                    <span class="text-danger"*ngIf="f1?.errors?.['minlength']">
+                        MINIMUM LENGTH 10 CHARACTERS
+                    </span>
+                </span> -->
+    
+            </p>
+            </div>
+            <div>
+               <p>
+                <label>LastName:</label>
+                <input type="text" name="lastname" id="lastname"  formControlName="lastname">
+               </p>
+            </div>
+            <div>
+              <p>
+                <label>Email:</label>
+                <input type="text" name="email" id="email" formControlName="email">
+              </p>
+            </div>
+            <div>
+                <p>
+                    <label>Gender:</label>
+                    <input type="radio" name="gender" value="Male" id="gender" formControlName="Gr">Male
+                    <input type="radio" name="gender" value="Female" id="gender" formControlName="Gr">Female
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label>Married:</label>
+                    <input type="checkbox" name="ismarried" id="ismarried" formControlName="IM">
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label>Country:</label>
+                    <select name="country" id="country" formControlName="Cn"> 
+                        <option>Select</option>
+                        <option>India</option>
+                        <option>China</option>
+                        <option>Pakistan</option>
+                        <option>SRI-LANKA</option>
+                    </select>
+                </p>
+            </div>
+            <div formGroupName="address">
+                <p>
+                    <label>Door No:</label>
+                    <input type="text" name="doorno" formControlName="dr">
+                </p>
+                <p>
+                    <label>Street:</label>
+                    <input type="text" name="street" formControlName="st">
+                </p>
+                <p>
+                    <label>City:</label>
+                    <input type="text" name="city" formControlName="cy">
+                </p>
+    
+            </div>
+            <div>
+                <p>
+                    <button [disabled]="!contactform.valid">Submit</button>
+                </p>
+            </div>
+        </form>   
+</div>
